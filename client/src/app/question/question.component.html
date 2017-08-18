@@ -1,0 +1,17 @@
+<a [routerLink]="['/home']">Home</a>
+<a [routerLink]="['/new_question']">Add a Question</a>
+<a href="/log_out">Log Out</a>
+
+<h2>New Question</h2>
+
+<form #form='ngForm' (submit)='post_data()'>
+  Question: <textarea name="question" rows="8" cols="80" [(ngModel)]='new_question.question' #qst='ngModel' required minlength='15'></textarea>
+  <span *ngIf='qst.invalid'>Question must be at least 15 characters</span>
+  <br>
+Correct Answer:  <input type="text" name="correct_ans" [(ngModel)]='new_question.correct_ans' #ans1='ngModel' required>
+<br>
+Fake Answer 1:  <input type="text" name="fake_ans1" [(ngModel)]='new_question.fake_ans1' #ans2='ngModel' required><br>
+Fake Answer 2:  <input type="text" name="fake_ans2" [(ngModel)]='new_question.fake_ans2' #ans3='ngModel' required><br>
+<button (click)='go_home()'>Cancel</button><br>
+<input type="submit" value="Add Question" [disabled]='form.invalid'>
+</form>
